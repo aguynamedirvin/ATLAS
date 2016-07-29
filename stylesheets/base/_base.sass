@@ -1,0 +1,47 @@
+//  --------------------------------------------------------------
+//  Note: HTML is set to 62.5% so that all the REM measurements
+//  are based on a 10px sizing. Basically 1.5rem = 15px (=
+//  --------------------------------------------------------------
+
+/* ------------------------------------
+    Base
+ ------------------------------------*/
+
+*,
+*:after,
+*:before
+    box-sizing: border-box
+
+html, body
+    height: 100%
+    margin: 0
+    padding: 0
+
+html
+    font-size: 62.5%
+
+body
+    color: $font-color
+    font:
+        family: $font-family
+        size: 1.6em
+    line-height: 1.8
+    text-rendering: optimizeLegibility
+
+    background: $color-primary
+    background: linear-gradient(to right, rgba(0, 0, 0, 1), $color-primary)
+
+img, figure
+    height: auto
+    max-width: 100%
+
+img
+    vertical-align: top
+
+a
+    color: $color-white
+    text-decoration: none
+
+::selection
+    background: $color-white
+    color: $color-primary

@@ -1,0 +1,27 @@
+/* ------------------------------------
+    Home page
+ ------------------------------------*/
+
+.choose-side
+    padding: ($gutter * 3) 0
+    text-align: center
+
+
+.shirt-showcase
+    text-align: center
+    margin: ($gutter * 3) 0
+
+    @include mq(large)
+        max-width: 49%
+
+    &:hover
+        img, h2
+            transform: scale(1.1)
+
+
+    img, h2
+        transition: transform 1000ms ease, filter 1500ms ease
+        transition-delay: 0, 2000ms
+
+    img
+        width: 65%

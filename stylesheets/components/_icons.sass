@@ -1,0 +1,61 @@
+/* ------------------------------------
+    Icons
+ ------------------------------------*/
+
+$icon-size: 3.2rem
+
+// Name of svg icon file    Ex: google-plus.svg -> google-plus
+$icons: (facebook, twitter, instagram, pinterest, google-plus, cart, remove)
+
+
+.icon
+    @extend %hidetext
+
+    width: $icon-size
+    height: $icon-size
+
+    display: block
+
+    transition: all .3s ease-in-out
+
+    background-color: $color-white
+
+    mask-size: contain
+    -webkit-mask-size: contain
+
+    mask-repeat: no-repeat
+    -webkit-mask-repeat: no-repeat
+
+    mask-position: center
+    -webkit-mask-position: center
+
+    @include mq(medium)
+        $icon-size: 2.4rem
+
+        width: $icon-size
+        height: $icon-size
+
+
+
+.icon
+    // Crate css for each icon in $icons list
+    @each $icon in $icons
+        &--#{$icon}
+            -webkit-mask-image: url(../images/icons/#{$icon}.svg)
+            mask-image: url(../images/icons/#{$icon}.svg)
+
+
+
+
+.icons--social
+    display: flex
+    align-items: center
+
+    .icon
+        margin: $spacing ($spacing * 2)
+        margin-left: 0
+
+        transition: all .3s ease-in-out
+
+        &:hover, &:focus
+            background-color: $color-grey

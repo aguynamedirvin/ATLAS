@@ -1,0 +1,28 @@
+/* ------------------------------------
+    Product page
+ ------------------------------------*/
+
+.single-product
+    @extend %flex
+
+    margin: ($spacing * 8) 0
+
+
+    .product
+        &__images
+            @include mq(large)
+                margin-right: $spacing * 4
+
+        &__price
+            font-size: $size-large
+
+        &__section
+            margin: ($spacing * 2) 0
+
+            h3
+                font-size: $size-small
+
+            p
+                font-size: $size-small
+                color: $color-grey
+                font-family: Arial

@@ -1,0 +1,110 @@
+/* ------------------------------------
+    Site header
+ ------------------------------------*/
+
+.site__header
+    background: $color-cod-grey
+    height: 5rem
+
+    @include mq(medium)
+        height: 6rem
+
+    .wrap
+        height: 100%
+
+        display: flex
+        align-items: center
+        justify-content: flex-end
+
+
+    .icon
+        $icon-size: 2rem
+
+        height: $icon-size
+        width: $icon-size
+
+
+.logo
+    @extend %hidetext
+
+    margin-right: auto
+    width: 300px
+
+    height: 2.5rem
+    display: block
+
+    //background-image: url('../images/logo.svg')
+    //background-repeat: no-repeat
+    //background-position: center
+    //background-size: contain
+
+    //transition: opacity .2s ease-in-out
+
+    //background: $color-white
+
+    background: linear-gradient(270deg, #383200, #ead849, #ffffff, #4e4600)
+    background-size: 150% 400%
+
+    -webkit-animation: gradient 3s ease infinite
+    animation: gradient 3s ease infinite
+
+    mask-size: contain
+    -webkit-mask-size: contain
+
+    mask-repeat: no-repeat
+    -webkit-mask-repeat: no-repeat
+
+    mask-position: center
+    -webkit-mask-position: center
+
+    -webkit-mask-image: url('../images/logo.svg')
+    mask-image: url('../images/logo.svg')
+
+    @at-root
+        @keyframes gradient
+            0%
+                background-position: 0% 52%
+            50%
+                background-position: 100% 49%
+            100%
+                background-position: 0% 52%
+
+
+    //&:hover
+        opacity: 0.7
+
+
+.nav-cart
+    height: 100%
+    background: darken($color-cod-grey, 10)
+
+    a
+        height: 100%
+        padding: 0 ($spacing * 2)
+        position: relative
+
+        /* Vertically align text */
+        display: flex
+        justify-content: center
+        flex-direction: column
+
+    .icon--cart
+        height: 3.4rem
+        width: 3.4rem
+
+        &:hover
+            background-color: $color-grey
+
+
+    &__items
+        background: $color-primary
+        color: $color-white
+        border-radius: 6px
+        position: absolute
+        font-size: 1rem
+        padding: 1px
+        text-align: center
+        min-width: 24px
+        display: block
+        top: 4px
+        right: 16px

@@ -1,0 +1,46 @@
+/* ------------------------------------
+    Form elements
+ ------------------------------------*/
+
+$height: 4.2rem
+$font-size: $size-medium
+
+// Vertically center words
+$padding: ($height - $font-size) / 2
+
+%input
+
+    /* Remove default apperance */
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+
+    padding: $padding 0
+
+    color: $color-white
+    text-transform: uppercase
+    letter-spacing: 4px
+    font-size: $font-size
+
+    margin: ($spacing / 1.5) 0
+
+    outline: none
+    cursor: pointer
+
+    display: inline-block
+    width: 100%
+
+    background: none
+    border: 2px solid $color-white
+    border-radius: 0
+
+    @include mq(large)
+        width: auto
+        padding: $padding ($height * 2)
+
+
+input[type='text']
+    @extend %input
+
+    cursor: text
+    padding: $padding $padding
