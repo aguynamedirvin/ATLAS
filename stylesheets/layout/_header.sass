@@ -30,7 +30,7 @@
     margin-right: auto
     width: 300px
 
-    height: 2.5rem
+    height: 2.65rem
     display: block
 
     //background-image: url('../images/logo.svg')
@@ -43,21 +43,13 @@
     //background: $color-white
 
     background: linear-gradient(270deg, #383200, #ead849, #ffffff, #4e4600)
-    background-size: 150% 400%
+    background-size: 200% 400%
 
-    -webkit-animation: gradient 3s ease infinite
-    animation: gradient 3s ease infinite
+    animation: gradient 4s ease infinite
 
     mask-size: contain
-    -webkit-mask-size: contain
-
-    mask-repeat: no-repeat
-    -webkit-mask-repeat: no-repeat
-
     mask-position: center
-    -webkit-mask-position: center
-
-    -webkit-mask-image: url('../images/logo.svg')
+    mask-repeat: no-repeat
     mask-image: url('../images/logo.svg')
 
     @at-root
@@ -75,26 +67,16 @@
 
 
 .nav-cart
-    height: 100%
     background: darken($color-cod-grey, 10)
 
-    a
-        height: 100%
-        padding: 0 ($spacing * 2)
-        position: relative
+    height: 100%
+    padding: 0 ($spacing * 2)
+    position: relative
 
-        /* Vertically align text */
-        display: flex
-        justify-content: center
-        flex-direction: column
-
-    .icon--cart
-        height: 3.4rem
-        width: 3.4rem
-
-        &:hover
-            background-color: $color-grey
-
+    /* Vertically align text */
+    display: flex
+    justify-content: center
+    flex-direction: column
 
     &__items
         background: $color-primary
@@ -108,3 +90,10 @@
         display: block
         top: 4px
         right: 16px
+
+    .icon--cart
+        height: 3.4rem
+        width: 3.4rem
+
+        &:hover
+            background-color: $color-grey
