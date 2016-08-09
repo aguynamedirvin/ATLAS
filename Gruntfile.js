@@ -194,8 +194,8 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= dirs.src.img %>',
-                    src: ['*.{png,jpg,jpeg,gif,svg}'],
+                    cwd: '<%= dirs.src.img %>/',
+                    src: ['**/*.{png,jpg,jpeg,gif,svg}'],
                     dest: '<%= dirs.dist.img %>'
                 }]
             }
@@ -238,7 +238,7 @@ module.exports = function (grunt) {
         Register Tasks
     **/
     // Build our CSS and JS files
-    grunt.registerTask('build', ['includes', 'sass', 'uglify:default'/*, 'imagemin'*/]);
+    grunt.registerTask('build', ['includes', 'sass', 'uglify:default', 'imagemin']);
 
     // Watch our files and compile if any changes
     grunt.registerTask('default', ['build', 'watch']);
