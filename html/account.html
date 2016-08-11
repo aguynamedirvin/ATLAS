@@ -1,0 +1,37 @@
+include "parts/header.html"
+
+
+            <div class="page">
+                <div class="page__title">
+                    <h1>Account</h1>
+                    <p>Update your information here. We don’t store your payment details or mailing address — those are managed through PayPal.</p>
+                </div>
+
+                <div class="page__content">
+
+                    <form class="account__details">
+
+                        <input type="text" required placeholder="Username" />
+                        <input type="email" required placeholder="Email" />
+                        <input type="password" required placeholder="Password" />
+                        <input type="text" required placeholder="Full name" />
+
+                        <div class="select">
+                            <select>
+                                <option value="us" selected>United States</option>
+                                <option value="canada">Canada</option>
+                                <option value="mexico">Mexico</option>
+                            </select>
+                        </div>
+                        
+                        <input type="text" required placeholder="Dicount code" />
+
+                        <button type="submit">Update</button>
+
+                    </form>
+
+                </div>
+            </div>
+
+
+include "parts/footer.html"
