@@ -8,5 +8,3 @@
 /dist/site/plugins/shopkit/snippets copy
 /dist/site/plugins/shopkit/gateways/*-paypalexpress/config.php
 /dist/content/1-shop/orders/
-
-dist/site/plugins/dompdf/

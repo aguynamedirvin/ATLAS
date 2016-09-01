@@ -6,6 +6,7 @@
  * label    Required. Used by templates/cart.php
  * logo     Optional. Used by templates/cart.php
  * sandbox  Optional. Used by templates/cart.php
+ *
  * Other variables used by your gateway's process.php and callback.php files
  */
 
