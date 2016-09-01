@@ -1,0 +1,87 @@
+Title: Shop
+
+----
+
+Text: 
+
+----
+
+Shipping: 
+
+- 
+  method: USPS First Class
+  countries: united-states
+  flat: "5.99"
+  item: ""
+  weight: ""
+  price: ""
+  calculation: high
+- 
+  method: USPS First Class International
+  countries: all-countries
+  flat: "15.99"
+  item: ""
+  weight: ""
+  price: ""
+  calculation: high
+
+----
+
+Tax: 
+
+----
+
+Paylater: 
+
+----
+
+Mailing-address: 1
+
+----
+
+Currency-code: USD
+
+----
+
+Currency-symbol: $
+
+----
+
+Currency-position: before
+
+----
+
+Featured: 
+
+----
+
+Slider: 
+
+----
+
+Discount-codes: 
+
+- 
+  code: ATLASGIVEAWAY
+  kind: percentage
+  amount: "10"
+  minorder: ""
+  paylater: "0"
+
+----
+
+Notifications: 
+
+- 
+  email: irvindominguez1@gmail.com
+  products: >
+    atlas-black-muscle-fit-tank-top,
+    atlas-red-muscle-fit-tank-top
+
+----
+
+Gift-certificates: 
+
+----
+
+Error-email: irvindominguez1@gmail.com

@@ -1,0 +1,13 @@
+title: Cart
+pages:
+  max: 1
+options:
+  delete: false
+  status: false
+  template: false
+  url: false
+fields:
+  title: title
+  text: markdown
+  slider:
+    extends: slider

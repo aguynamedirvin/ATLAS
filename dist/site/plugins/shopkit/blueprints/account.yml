@@ -1,0 +1,12 @@
+title: Account settings page
+pages:
+  max: 2
+options:
+  delete: false
+  status: false
+  template: false
+  url: false
+fields:
+  title: title
+  text: markdown
+  slider: slider

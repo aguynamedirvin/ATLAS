@@ -1,0 +1,88 @@
+Tab1: 
+
+----
+
+Title: ATLAS Black Muscle-fit Tank-top
+
+----
+
+Brand: ATLAS
+
+----
+
+Text: 
+
+Designed using high quality cotton and spandex to create a top that bends, stretches, and moves with you — so whatever your workout requires, it has you covered.
+
+*  Machine wash cold
+* Hang dry
+* 95% cotton, 5% spandex
+
+We recommend washing and drying this shirt inside-out to reduce chances of fading and peeling.
+
+----
+
+Variants: 
+
+- 
+  name: Small
+  price: "19.99"
+  sku: S-B-MF-TT-1
+  weight: "2"
+  stock: ""
+  options: ""
+  description: ""
+  sale_price: ""
+  sale_start: ""
+  sale_end: ""
+  sale_codes: ""
+  download_files: ""
+  download_days: ""
+- 
+  name: Medium
+  price: "19.99"
+  sku: M-B-MF-TT-1
+  weight: "2"
+  stock: ""
+  options: ""
+  description: ""
+  sale_price: ""
+  sale_start: ""
+  sale_end: ""
+  sale_codes: ""
+  download_files: ""
+  download_days: ""
+- 
+  name: Large
+  price: "19.99"
+  sku: L-B-MF-TT-1
+  weight: "2"
+  stock: ""
+  options: ""
+  description: ""
+  sale_price: ""
+  sale_start: ""
+  sale_end: ""
+  sale_codes: ""
+  download_files: ""
+  download_days: ""
+
+----
+
+Tags: gym,musclefit,tanktop
+
+----
+
+Relatedproducts: 
+
+----
+
+Tab2: 
+
+----
+
+Noshipping: 0
+
+----
+
+Tax: 

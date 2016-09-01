@@ -1,0 +1,10 @@
+title: Search
+pages: false
+options:
+  delete: false
+  status: false
+  template: false
+  url: false
+fields:
+  title: title
+  text: markdown

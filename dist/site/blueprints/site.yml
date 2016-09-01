@@ -1,0 +1,53 @@
+title: Site options
+pages: true
+  template:
+    - default
+fields:
+  tab1:
+    label: General
+    type: tabs
+    icon: cog
+  title:
+    extends: title
+    label: Site name
+  logo:
+    label: Site logo
+    type:  image
+    width: 1/2
+  placeholder:
+    label: Placeholder photo
+    help: For products and pages that don't have a photo
+    type:  image
+    width: 1/2
+  tab2:
+    label: Theme
+    type: tabs
+    icon: paint-brush
+  backgroundColor:
+    label: Background colour
+    type:  color
+    default: FFFFFF
+  backgroundImage:
+    label: Background image
+    type:  image
+    width: 1/2
+  backgroundBlur:
+    label: Background blur
+    type:  checkbox
+    text: Blur the background image
+    width: 1/2
+  colorBase:
+    label: Base colour
+    type: color
+    default: EEEEEE
+    width: 1/3
+  colorAccent:
+    label: Accent colour
+    type: color
+    default: 00a8e6
+    width: 1/3
+  colorLink:
+    label: Link colour
+    type: color
+    default: 0077dd
+    width: 1/3

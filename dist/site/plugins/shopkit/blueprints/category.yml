@@ -1,0 +1,12 @@
+title: Product category
+icon: folder
+pages:
+  template:
+    - product
+    - category
+fields:
+  title: title
+  text:
+    extends: markdown
+    label: Description
+  slider: slider

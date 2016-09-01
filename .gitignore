@@ -2,3 +2,11 @@
 /dist/assets
 /dist/*.html
 /dist/bigcartel
+/dist/site/config/*
+/dist/site/accounts/*
+/dist/site/plugins/shopkit/templates copy
+/dist/site/plugins/shopkit/snippets copy
+/dist/site/plugins/shopkit/gateways/*-paypalexpress/config.php
+/dist/content/1-shop/orders/
+
+dist/site/plugins/dompdf/
