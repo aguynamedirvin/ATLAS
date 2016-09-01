@@ -1,0 +1,6 @@
+[submodule "dist/panel"]
+	path = dist/panel
+	url = https://github.com/getkirby/panel.git
+[submodule "dist/kirby"]
+	path = dist/kirby
+	url = https://github.com/getkirby/kirby.git
