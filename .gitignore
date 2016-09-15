@@ -8,3 +8,11 @@
 /dist/site/plugins/shopkit/snippets copy
 /dist/site/plugins/shopkit/gateways/*-paypalexpress/config.php
 /dist/content/1-shop/orders/
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

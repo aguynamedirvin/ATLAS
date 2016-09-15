@@ -1,44 +1,49 @@
 <?php snippet('header') ?>
 
-<h1 dir="auto"><?= $page->title() ?></h1>
+    <div class="page">
+        <div class="page__title">
+            <h1><?= $page->title()->html() ?></h1>
+            <p><?= $page->text()->kirbytext()->bidi() ?></p>
+        </div>
 
-<?= $page->text()->kirbytext()->bidi() ?>
+        <div class="page__content">
 
-<h2 dir="auto"><?= l::get('order-details') ?></h2>
+            <h2><?= l::get('personal-details') ?></h2>
 
-<ul dir="auto">
-    <?php foreach ($txn->products()->toStructure() as $product) { ?>
-        <li>
-            <strong><?= $product->name() ?></strong> / <?= $product->variant() ?> <?= $product->option() != '' ? '/ '.$product->option() : '' ?> / <?= l('qty').' '.$product->quantity() ?><br>
-            <?= formatPrice($product->amount()->value) ?>
-        </li>
-    <?php } ?>
-</ul>
+            <form method="post">
 
-<h2 dir="auto"><?= l::get('personal-details') ?></h2>
+                <input type="hidden" name="txn_id" value="<?= $txn->txn_id() ?>">
 
-<form class="uk-form uk-form-stacked" method="post">
+                <input required type="text" name="payer_name" value="<?= $payer_name ?>" placeholder="Your name">
+                <input required type="email" name="payer_email" value="<?= $payer_email ?>" placeholder="Your email">
+                <input required type="text" name="payer_address" placeholder="Your adress. Ex: 12323 Main St. Los Angeles, CA 96001" value="<?= $payer_address ?>">
 
-    <input type="hidden" name="txn_id" value="<?= $txn->txn_id() ?>">
 
-    <div class="uk-form-row">
-        <label for="payer_name"><?= l::get('full-name') ?></label>
-        <input required class="uk-form-width-large" type="text" name="payer_name" value="<?= $payer_name ?>">
+                <h2><?= l::get('order-details') ?></h2>
+                <div class="cart">
+                    <div class="cart__items">
+                        <?php foreach( $txn->products()->toStructure() as $product ): ?>
+                            <li class="product">
+                                <div class="product__details">
+                                    <h2 class="product__title"><?= $product->name() ?></h2>
+
+                                    <div class="product__price">
+                                        <span class="price"><?= formatPrice($product->amount()->value) ?></span>
+                                        <span class="qty">(x<?= $product->quantity() ?>)</span>
+                                    </div>
+
+                                    <span class="product__option"><?= str::upper($product->variant()) ?></span>
+                                </div>
+                            </li>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+
+                <button type="submit"><?= l::get('confirm-order') ?></button>
+
+            </form>
+            
+        </div>
     </div>
-    
-    <div class="uk-form-row">
-        <label for="payer_email"><?= l::get('email') ?></label>
-        <input required class="uk-form-width-large" type="email" name="payer_email" value="<?= $payer_email ?>">
-    </div>
-
-    <div class="uk-form-row">
-        <label for="payer_address"><?= l::get('mailing-address') ?></label>
-        <textarea class="uk-form-width-large" name="payer_address"><?= $payer_address ?></textarea>
-    </div>
-    
-    <div class="uk-form-row">
-	   <button class="uk-button uk-button-primary uk-form-width-large" type="submit"><?= l::get('confirm-order') ?></button>
-    </div>
-</form>
 
 <?php snippet('footer') ?>

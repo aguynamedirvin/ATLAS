@@ -1,5 +1,9 @@
-# www.robotstxt.org/
+# Prevent search engine crawlers from indexing internal Kirby content
 
-# Allow crawling of all content
 User-agent: *
-Disallow:
+Disallow: /assets/
+Disallow: /content/*.txt$
+Disallow: /kirby/
+Disallow: /panel/
+Disallow: /site/
+Disallow: /*.md$

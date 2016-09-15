@@ -1,3 +1,42 @@
+# Kirby .htaccess
+
+# rewrite rules
+<IfModule mod_rewrite.c>
+
+# enable awesome urls. i.e.:
+# http://yourdomain.com/about-us/team
+RewriteEngine on
+
+# make sure to set the RewriteBase correctly
+# if you are running the site in a subfolder.
+# Otherwise links or the entire site will break.
+#
+# If your homepage is http://yourdomain.com/mysite
+# Set the RewriteBase to:
+#
+# RewriteBase /mysite
+
+# block text files in the content folder from being accessed directly
+RewriteRule ^content/(.*)\.(txt|md|mdown)$ index.php [L]
+
+# block all files in the site folder from being accessed directly
+RewriteRule ^site/(.*) index.php [L]
+
+# block all files in the kirby folder from being accessed directly
+RewriteRule ^kirby/(.*) index.php [L]
+
+# make panel links work
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^panel/(.*) panel/index.php [L]
+
+# make site links work
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*) index.php [L]
+
+</IfModule>
+
 # Suppressing / Forcing the `www.` at the beginning of URLs
 <ifModule mod_rewrite.c>
     RewriteEngine On
@@ -52,7 +91,7 @@
     <filesMatch ".(js)$">
     Header set Cache-Control "private"
     </filesMatch>
-    
+
     <filesMatch ".(x?html?|php)$">
     Header set Cache-Control "private, must-revalidate"
     </filesMatch>

@@ -155,21 +155,6 @@
                             <?php else: ?>
                                 <button type="submit">
                                     <?= $gateway != 'paylater' ? '<span>' . l::get('pay-now') . '</span>' : '' ?>
-
-                                    <!--<?php if (!$g['logo']): ?>
-                                        <?= $g['label'] ?>
-                                    <?php else: ?>
-                                        <?php
-                                            $logo_path = $g['logo'];
-                                            $logo_data = base64_encode(file_get_contents($logo_path));
-                                            $logo_src = 'data: '.mime_content_type($logo_path).';base64,'.$logo_data;
-                                        ?>
-                                        <img src="<?= $logo_src ?>" alt="<?= $g['label'] ?>" width="55">
-                                    <?php endif ?>
-
-                                    <?php /* if (isset($g['sandbox']) and $g['sandbox']): ?>
-                                        <?= l::get('sandbox-message') ?>
-                                    <?php endif */ ?>-->
                                 </button>
                                 <p class="text--small"><span class="icon  icon--secure  icon--small">Secure payment</span> Payments securely processed by <a href="https://stripe.com/">Stripe</a>.</p>
                             <?php endif ?>
