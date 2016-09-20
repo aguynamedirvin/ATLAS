@@ -238,7 +238,7 @@ module.exports = function (grunt) {
         Register Tasks
     **/
     // Build our CSS and JS files
-    grunt.registerTask('build', ['includes', 'sass', 'uglify:default', 'imagemin']);
+    grunt.registerTask('build', ['includes', 'sass', 'uglify:default']);
 
     // Watch our files and compile if any changes
     grunt.registerTask('default', ['build', 'watch']);

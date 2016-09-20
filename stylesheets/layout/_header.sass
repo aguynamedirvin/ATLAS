@@ -11,6 +11,7 @@
 
     .wrap
         height: 100%
+        position: relative
 
         display: flex
         align-items: center
@@ -24,33 +25,37 @@
         align-items: center
 
         .icon
-            $icon-size: 3rem
+            $icon-size: 2.2rem
 
             height: $icon-size
             width: $icon-size
-            margin-left: 2rem
+            margin-left: 2.5rem
 
             &:hover
                 background-color: $color-grey
 
         .nav-cart
             position: relative
-            
+
         .items
-            background: $color-primary
-            color: $color-white
-            border-radius: 6px
+            background: $color-white
+            color: $color-cod-grey
+            border-radius: 40%
             position: absolute
-            font-size: 1rem
-            padding: 1px
+            font-size: 1.2rem
             text-align: center
-            min-width: 24px
+            width: 2.4rem
+            height: 2rem
             display: block
             top: -6px
             right: -15px
 
     .icons--social
+        display: none
         border-right: 1px solid $color-grey
+
+        @include mq(medium)
+            display: flex
 
         .icon
             $icon-size: 1.8rem
@@ -70,15 +75,6 @@
     height: 2.65rem
     display: block
 
-    //background-image: url('../images/logo.svg')
-    //background-repeat: no-repeat
-    //background-position: center
-    //background-size: contain
-
-    //transition: opacity .2s ease-in-out
-
-    //background: $color-white
-
     background: linear-gradient(270deg, #383200, #ead849, #ffffff, #4e4600)
     background-size: 200% 400%
 
@@ -97,7 +93,3 @@
                 background-position: 100% 49%
             100%
                 background-position: 0% 52%
-
-
-    //&:hover
-        opacity: 0.7

@@ -3,15 +3,19 @@
  ------------------------------------*/
 
 .single-product
-    @extend %flex
-
+    display: flex
+    flex-direction: column
     margin: ($spacing * 8) 0
+
+    @include mq(large)
+        flex-direction: row
 
 
     .product
         &__images
             @include mq(large)
                 margin-right: $spacing * 4
+                max-width: 75rem
 
         &__price
             font-size: $size-large
@@ -22,7 +26,14 @@
             h3
                 font-size: $size-small
 
-            p
+            form
+                align-items: flex-start
+
+            .product__info
                 font-size: $size-small
                 color: $color-grey
                 font-family: Arial
+
+                li
+                    list-style: circle
+                    list-style-position: inside

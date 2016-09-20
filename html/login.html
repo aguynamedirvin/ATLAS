@@ -2,18 +2,29 @@ include "parts/header.html"
 
 
             <div class="page">
-                <div class="page__title">
-                    <h1>Login</h1>
-                </div>
-
                 <div class="page__content">
 
-                    <form class="login">
-                        <input type="email" required placeholder="Email" />
-                        <input type="password" required placeholder="Password" />
+                    <div grid>
+                        <form col="6">
+                            <h4>Login</h4>
 
-                        <button type="submit">Login</button>
-                    </form>
+                            <input type="email" required placeholder="Email" />
+                            <input type="password" required placeholder="Password" />
+
+                            <button class="btn  btn--inverse" type="submit">Login</button>
+
+                            <p><a href="">Forgot password?</a></p>
+                        </form>
+
+                        <form col="6">
+                            <h4>Register</h4>
+
+                            <input type="email" required placeholder="Email" />
+                            <input type="password" required placeholder="Password" />
+
+                            <button type="submit">Register</button>
+                        </form>
+                    </div>
 
                 </div>
             </div>

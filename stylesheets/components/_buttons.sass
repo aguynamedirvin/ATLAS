@@ -6,13 +6,21 @@
 button,
 input[type='submit']
     @extend %input
-
     text-align: center
-
     transition: background .3s
-
+    cursor: pointer
 
     &:hover,
     &:focus
         background: $color-white
         color: $color-cod-grey
+
+
+.btn--inverse
+    background: $color-white
+    color: $color-cod-grey
+
+    &:hover,
+    &:focus
+        background: transparent
+        color: $color-white

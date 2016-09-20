@@ -9,7 +9,6 @@ $font-size: $size-medium
 $padding: ($height - $font-size) / 2
 
 %input
-
     /* Remove default apperance */
     -webkit-appearance: none
     -moz-appearance: none
@@ -38,6 +37,9 @@ $padding: ($height - $font-size) / 2
         width: auto
         padding: $padding ($height * 2)
 
+    &[disabled]
+        border-color: $color-grey
+
 
 textarea,
 input[type='tel'],
@@ -46,8 +48,8 @@ input[type='text'],
 input[type='email'],
 input[type='password']
     @extend %input
-
-    padding: $padding $padding
+    text-align: left
+    padding: $padding
 
 
 textarea
@@ -56,15 +58,10 @@ textarea
 
 form
     display: flex
-    align-items: center
+    align-items: start
     flex-direction: column
 
     label
-        display: block
-
-    input,
-    textarea
-        min-width: 50%
         display: block
 
 
@@ -94,12 +91,17 @@ form
 
     select
         @extend %input
+        width: 100%
         padding-left: $spacing
+        padding-right: $spacing * 2
 
 
 
 
 form
-    in
     label
         display: block
+
+
+.forRobots
+    display: none

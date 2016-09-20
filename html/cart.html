@@ -2,81 +2,128 @@ include "parts/header.html"
 
         <div class="page">
 
-            <h1 class="page__title">Cart</h1>
+            <h1 class="page__title">Your cart</h1>
 
 
             <div class="cart">
-                <div class="cart__items">
-                    <li class="product">
-                        <a href="#remove"><span class="icon  icon--remove">Remove</span></a>
 
-                        <a href="product.html">
-                            <img class="product__thumb" src="assets/images/atlas-red-tank.png" title="ATLAS Red Muscle-fit Tank-top" />
-                        </a>
+                <div class="cart-left">
+                    <div class="cart__items">
 
-                        <div class="product__details">
-                            <h2 class="product__title">ATLAS Red Muscle-fit Tank-top</h2>
+                        <li class="product">
+                            <a href="product.html">
+                                <img class="product__thumb" src="assets/images/atlas-red-tank.png" title="ATLAS Red Muscle-fit Tank-top" />
+                            </a>
 
-                            <div class="product__price">
-                                <span class="price">$19.99</span>
-                                <span class="qty">(x1)</span>
+                            <div class="product__details">
+                                <h2 class="product__title">
+                                    <a href="product.html">ATLAS Red Muscle-fit Tank-top</a>
+                                </h2>
+
+                                <div class="product__price">
+                                    <span class="price">$19.99</span>
+                                </div>
+
+                                <span class="product__variant">Small</span>
+
+                                <div class="product__quantity">
+                                    <button class="btn-test  icon  icon--minus" data-func="minus">Minus</button>
+                                    <input id="qty" type="text" value="2" autocomplete="false" />
+                                    <button class="btn-test  icon  icon--add" data-func="add">Add</button>
+                                </div>
                             </div>
+                        </li>
 
-                            <span class="product__option">Small</span>
-                        </div>
+                        <li class="product">
+                            <a href="product.html">
+                                <img class="product__thumb" src="assets/images/atlas-black-tank.png" title="ATLAS Black Muscle-fit Tank-top" />
+                            </a>
 
+                            <div class="product__details">
+                                <h2 class="product__title">
+                                    <a href="product.html">ATLAS Black Muscle-fit Tank-top</a>
+                                </h2>
 
-                        <div class="qty-input">
-                            <label>
-                                Qty.
-                                <input type="text" value="1" />
-                            </label>
-                        </div>
+                                <div class="product__price">
+                                    <span class="price">$19.99</span>
+                                </div>
 
-                    </li>
+                                <span class="product__variant">Small</span>
 
-                    <li class="product">
-                        <a href="#remove"><span class="icon  icon--remove">Remove</span></a>
-
-                        <a href="product.html">
-                            <img class="product__thumb" src="assets/images/atlas-black-tank.png" title="ATLAS Black Muscle-fit Tank-top" />
-                        </a>
-
-                        <div class="product__details">
-                            <h2 class="product__title">ATLAS Black Muscle-fit Tank-top</h2>
-
-                            <div class="product__price">
-                                <span class="price">$19.99</span>
-                                <span class="qty">(x2)</span>
+                                <div class="product__quantity">
+                                    <button class="btn-test  icon  icon--minus" data-func="minus">Minus</button>
+                                    <input id="qty" type="text" value="1" autocomplete="false" />
+                                    <button class="btn-test  icon  icon--add" data-func="add">Add</button>
+                                </div>
                             </div>
-
-                            <span class="product__option">Small</span>
-                        </div>
-
-
-                        <div class="qty-input">
-                            <label>
-                                Qty.
-                                <input type="text" value="2" />
-                            </label>
-                        </div>
-                    </li>
-
-                    <button class="btn">Update quantity</button>
+                        </li>
+                    </div>
                 </div>
 
-                <div class="cart__summary">
-                    <ul class="cart__details">
-                        <li>Items <span>$19.99</span></li>
-                        <li>Shipping <span>Applicable fees apply</span></li>
-                        <li>Total <span>$19.99</span></li>
+
+                <div class="cart__info">
+                    <p>Do you have a promo code?</p>
+                    <div>
+                        <input type="text" placeholder="Promo code" />
+                        <button>Apply</button>
+                    </div>
+
+                    <ul class="details">
+                        <li>Merchandise <span>$59.97</span></li>
+                        <li>Shipping <span>5.99</span></li>
+                        <li>Total <span>$65.96</span></li>
                     </ul>
 
-                    <button class="btn">Checkout</button>
+                    <button class="btn  btn--inverse">Checkout</button>
+
+                    <p class="secure-payment"><span class="icon  icon--secure">Secure payment</span> Payments securely processed by <a href="https://stripe.com/">Stripe</a>.</p>
                 </div>
 
             </div><!-- /.cart -->
 
         </div><!-- /.page -->
+
+        <script>
+
+            var qty = document.getElementById('qty');
+            var btn = document.getElementsByClassName('btn-test');
+
+            // Update quantity
+            var setQuantity = function() {
+                var attribute = this.getAttribute("data-func");
+
+                var value = parseInt(qty.value, 10);
+                value = isNaN(value) ? 0 : value;
+
+                if ( attribute == 'add' ) {
+                    value++;
+                    qty.value = value;
+                }
+                if ( attribute == 'minus'  && value > 1 ) {
+                    value--;
+                    qty.value = value;
+                }
+            };
+
+            for (var i = 0; i < btn.length; i++) {
+                btn[i].addEventListener('click', setQuantity, false);
+            }
+
+            //creates a listener for when you press a key
+            window.onkeyup = keyup;
+
+            function keyup(e) {
+                // Get the value
+                qty = e.target.value;
+
+                console.log(qty);
+
+                //listens for you to press the ENTER key
+                if (e.keyCode == 13) {
+                    // do something
+                }
+            }
+
+        </script>
 
 include "parts/footer.html"
