@@ -15,8 +15,8 @@
 
     // Set the API key
     $stripe = [
-      "secret_key"      => $stripecheckout['sandbox'] ? $stripecheckout['key_test_secret'] : $stripecheckout['key_live_secret'],
-      "publishable_key" => $stripecheckout['sandbox'] ? $stripecheckout['key_test_publishable'] : $stripecheckout['key_live_publishable']
+        "secret_key"      => $stripecheckout['sandbox'] ? $stripecheckout['key_test_secret'] : $stripecheckout['key_live_secret'],
+        "publishable_key" => $stripecheckout['sandbox'] ? $stripecheckout['key_test_publishable'] : $stripecheckout['key_live_publishable']
     ];
 
     \Stripe\Stripe::setApiKey($stripe['secret_key']);
@@ -31,10 +31,6 @@
             'source'    => get('stripeToken')
         ));
 
-        if ($customer) echo 'Created customer<br/>';
-
-        echo 'Charge amount is: ' . get('amount') . '<br />';
-
         // Charge the customer
         $charge = \Stripe\Charge::create(array(
             'customer' => $customer->id,
@@ -46,15 +42,15 @@
         // Validate the charge against the pending order
         $txn = page('shop/orders/' . $txn);
 
-        // Get the order total with taxes, discount, & gift certificate
-        $total = $txn->subtotal()->value + $txn->tax()->value - $txn->discount()->value - $txn->giftcertificate()->value;
+        // Get the order total with shipping, taxes, discount, & gift certificate
+        $total = $txn->subtotal()->value + $txn->shipping()->value
+                                         + $txn->tax()->value
+                                         - $txn->discount()->value
+                                         - $txn->giftcertificate()->value;
 
-        $chargeAmount = round($charge->amount);
-        $orderTotal = round($total * 100);
 
         // We need to multiply the $txn values by 100 because Stripe gives us the amount in cents
-        if ( round($charge->amount) == round($total * 100) ) {
-
+        if ( round($charge->amount, 2) == round($total * 100, 2) ) {
 
             // Set Shopkit payment status
             $payment_status = $charge->status == 'succeeded' ? 'paid' : 'pending';
@@ -99,13 +95,9 @@
 
             // Kick the user back to the cart
             go(url('shop/cart'));
-
-            echo 'Something went wrong in comparing order';
         }
     } else {
         // Data didn't come back properly from Stripe
-        echo 'Did not receive token';
-
         // Kick the user back to the cart
         go(url('shop/cart'));
     }

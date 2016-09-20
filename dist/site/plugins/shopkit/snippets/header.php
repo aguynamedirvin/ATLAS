@@ -15,10 +15,6 @@
         <!-- Stylesheets -->
         <?= css('assets/css/main.css') ?>
 
-        <link href='https://fonts.googleapis.com/css?family=Oswald|Fjalla+One|Share' rel='stylesheet' type='text/css'>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
     </head>
 
 
@@ -53,7 +49,7 @@
 
                     <li class="nav-cart">
                         <a href="<?= url('shop/cart') ?>" title="<?php l::get('view-cart') ?>">
-                            <i class="icon icon--cart">Cart</i>
+                            <i class="icon  icon--bag">Cart</i>
                             <span class="items">
                                 <?php
                                     $cart = Cart::getCart();

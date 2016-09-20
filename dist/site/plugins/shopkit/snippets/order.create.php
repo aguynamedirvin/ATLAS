@@ -1,7 +1,11 @@
 <?php
 // Honeypot trap for robots
-if(r::is('post') and get('subject') != '') go(url('error'));
+if (r::is('post') && get('subject') != '')  go(url('error'));
 
+
+/**
+ * Create the order file
+ */
 $cart = Cart::getCart();
 
 $shipping = s::get('shipping');
@@ -39,12 +43,12 @@ foreach ($cart->getItems() as $i => $item) {
 				];
 			}
 		}
-	} 
+	}
 	$items[] = (array)$item;
 }
 
 // Unique transaction ID
-$txn_id = get('gateway').'-'.$timestamp.'-'.bin2hex(openssl_random_pseudo_bytes(2));
+$txn_id = get('gateway') . '-' . $timestamp . '-' . bin2hex(openssl_random_pseudo_bytes(2));
 
 try {
 	// Create the pending order file
@@ -53,9 +57,9 @@ try {
 		'txn-date'  => $timestamp,
 		'txn-currency' => page('shop')->currency_code(),
 		'status'  => $status,
-		'products' => "\n".yaml::encode($items),
-		'subtotal' => number_format($cart->getAmount(),2,'.',''),
-		'discount' => number_format($discount['amount'],2,'.',''),
+		'products' => "\n" . yaml::encode($items),
+		'subtotal' => number_format($cart->getAmount(), 2, '.' , ''),
+		'discount' => number_format($discount['amount'], 2, '.', ''),
 		'shipping' => $shipping['rate'],
 		'shipping-method' => $shipping['title'],
 		'tax' => number_format($cart->getTax(),2,'.',''),
@@ -70,7 +74,7 @@ try {
 			'payer-email' => $user->email(),
 			'payer-address' => page('shop/countries/'.$user->country())->title()
 		], site()->defaultLanguage()->code());
-	}	
+	}
 
 	// Update the giftcard balance
 	if ($giftCertificateRemaining = get('giftCertificateRemaining')) {
@@ -88,6 +92,6 @@ try {
 }
 
 // Redirect to self with GET, passing along the order ID
-go('shop/cart/process/'.get('gateway').'/'.$txn_id);
+go('shop/cart/process/' . get('gateway') . '/' . $txn_id);
 
 ?>

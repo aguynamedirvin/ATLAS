@@ -61,13 +61,6 @@ Slider:
 
 Discount-codes: 
 
-- 
-  code: ATLASGIVEAWAY
-  kind: percentage
-  amount: "10"
-  minorder: ""
-  paylater: "0"
-
 ----
 
 Notifications: 

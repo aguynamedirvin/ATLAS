@@ -39,53 +39,61 @@ $kirby->set('route',[
     return go('shop/cart');
   }
 ]);
-$kirby->set('route',[
-  // Creates transaction page from Cart data
-  'pattern' => 'shop/cart/process',
-  'method' => 'POST',
-  'action' => function() {
 
-    // Set detected language
-    site()->visit('shop', (string) site()->detectedLanguage());
-    site()->kirby->localize();
-    
-    snippet('order.create');
-  }
+
+/**
+ * Create & process the order
+ */
+$kirby->set('route', [
+    // Creates transaction page from Cart data
+    'pattern' => 'shop/cart/process',
+    'method'  => 'POST',
+    'action'  => function() {
+
+        // Set detected language
+        site()->visit('shop', (string) site()->detectedLanguage());
+        site()->kirby->localize();
+
+        snippet('order.create');
+    }
 ]);
 $kirby->set('route', [
-  // Forwards transaction data to payment gateway
-  'pattern' => 'shop/cart/process/(:any)/(:any)',
-  'action' => function($gateway, $txn_id) {
+    // Forwards transaction data to payment gateway
+    'pattern' => 'shop/cart/process/(:any)/(:any)',
+    'action'  => function($gateway, $txn_id) {
 
-    // Set detected language
-    site()->visit('shop', (string) site()->detectedLanguage());
-    site()->kirby->localize();
+        // Set detected language
+        site()->visit('shop', (string) site()->detectedLanguage());
+        site()->kirby->localize();
 
-    // Get the transaction file we just created
-    $txn = page('shop/orders/'.$txn_id);
-    if(!$txn) go('shop/cart');
+        // Get the transaction file we just created
+        $txn = page('shop/orders/' . $txn_id);
+        if ( !$txn ) go('shop/cart');
 
-    // Load gateway processing snippet
-    snippet($gateway.'.process', ['txn' => $txn]);
-  }
+        // Load gateway processing snippet
+        snippet($gateway . '.process', ['txn' => $txn]);
+    }
+]);
+
+
+
+$kirby->set('route',[
+    // Payment gateway listener
+    'pattern' => 'shop/cart/callback/(:any)',
+    'method' => 'GET|POST',
+    'action' => function($gateway) {
+        snippet($gateway . '.callback');
+        return true;
+    }
 ]);
 $kirby->set('route',[
-  // Payment gateway listener
-  'pattern' => 'shop/cart/callback/(:any)',
-  'method' => 'GET|POST',
-  'action' => function($gateway) {
-    snippet($gateway.'.callback');
-    return true;
-  }
-]);
-$kirby->set('route',[
-  // PDF invoice download
-  'pattern' => '(:all)/shop/orders/pdf',
-  'method' => 'POST',
-  'action' => function($lang) {
-    snippet('order.pdf', ['lang' => $lang]);
-    return true;
-  }
+    // PDF invoice download
+    'pattern' => '(:all)/shop/orders/pdf',
+    'method' => 'POST',
+    'action' => function($lang) {
+        snippet('order.pdf', ['lang' => $lang]);
+        return true;
+    }
 ]);
 $kirby->set('route',[
   // Multilang slideshow
@@ -104,30 +112,29 @@ $kirby->set('route',[
   }
 ]);
 $kirby->set('route',[
-  // Password reset and account opt-in verification
-  'pattern' => 'token/([a-f0-9]{32})',
-  'action' => function($token) {
+    // Password reset and account opt-in verification
+    'pattern' => 'token/([a-f0-9]{32})',
+    'action' => function($token) {
 
-    // Log out any active users
-    if($u = site()->user()) $u->logout();
+        // Log out any active users
+        if($u = site()->user()) $u->logout();
 
-    // Find user by token
-    if ($user = site()->users()->findBy('token',$token)) {
+        // Find user by token
+        if ($user = site()->users()->findBy('token',$token)) {
+            // Destroy the token and update the password temporarily
+            $user->update([
+                'token' => '',
+                'password' => $token,
+            ]);
 
-      // Destroy the token and update the password temporarily
-      $user->update([
-        'token' => '',
-        'password' => $token,
-      ]);
-
-      // Log in
-      if ($user->login($token)) {
-        return go('account?reset=true');
-      } else {
-        return go('/');
-      } 
-    } else {
-      return false;
+            // Log in
+            if ($user->login($token)) {
+                return go('account?reset=true');
+            } else {
+                return go('/');
+            }
+        } else {
+            return false;
+        }
     }
-  }
 ]);

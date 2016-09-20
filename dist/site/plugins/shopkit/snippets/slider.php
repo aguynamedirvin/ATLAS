@@ -19,7 +19,7 @@ if (is_array($filenames)) {
 	<?php foreach ($photos as $photo): ?>
 		<input <?= ecco($first,'checked') ?> type="radio" name="thumbnail" id="<?= $photo->hash() ?>">
 		<div class="slide">
-			<img src="<?= $photo->thumb(['width' => 500, 'quality' => 100])->dataUri() ?>" title="<?= $photo->title() ?>"/>
+			<img src="<?= $photo->thumb(['width' => 600, 'quality' => 100])->dataUri() ?>" title="<?= $photo->title() ?>"/>
 		</div>
 		<?php $first = false ?>
 	<?php endforeach ?>

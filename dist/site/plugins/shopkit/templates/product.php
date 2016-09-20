@@ -17,20 +17,20 @@
             <div class="product__section">
                 <?php if (count($variants)): ?>
                     <form method="post" action="<?= url('shop/cart') ?>">
+
+                        <!-- Hidden fields -->
+                        <input type="hidden" name="action" value="add">
+                        <input type="hidden" name="uri" value="<?= $page->uri() ?>">
+
                         <div class="product__size  select">
-                            <select>
+                            <select name="variant">
                                 <?php foreach ($variants as $variant): ?>
-                                    <option data-price="<?= $variant->price() ?>" data-variant="<?= str::slug($variant->name()) ?>">
+                                    <option data-price="<?= $variant->price() ?>" value="<?= str::slug($variant->name()) ?>">
                                         <?= $variant->name() ?>
                                     </option>
                                 <?php endforeach ?>
                             </select>
                         </div>
-
-                        <!-- Hidden fields -->
-                        <input type="hidden" name="action" value="add">
-                        <input type="hidden" name="uri" value="<?= $page->uri() ?>">
-                        <input type="hidden" name="variant" value="<?= str::slug($variant->name()) ?>">
 
                         <button type="submit">Add to cart</button>
                     </form>
@@ -100,7 +100,8 @@
         </div><!-- / .product__details -->
     </div><!-- /.single-product -->
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    
     <script>
         $(document).ready(function() {
             var basePrice = $('.product__size > select option:first-child').data('price');
@@ -114,7 +115,7 @@
 
                 $(".product__size > select option:selected").each(function () {
                     price = parseFloat($(this).data('price'));
-                    variant = $(this).data('variant');
+                    variant = $(this).val();
 
                     // Format numbers
                     price = price.toFixed(2);

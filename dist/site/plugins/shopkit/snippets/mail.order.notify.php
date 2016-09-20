@@ -15,7 +15,7 @@
 
     $email = email(array(
         'to'      => $n->email(),
-        //'from'    => 'noreply@'.server::get('server_name'),
+        //'from'    => 'noreply@' . server::get('server_name'),
         'from'    => 'irvindominguez1@gmail.com',
         //'subject' => l::get('order-notification-subject'),
         'subject' => 'This is subject',

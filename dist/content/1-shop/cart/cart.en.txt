@@ -1,9 +1,9 @@
-Title: Cart
+Title: Your cart
 
 ----
 
-Text: 
+Text:
 
 ----
 
-Slider: 
+Slider:

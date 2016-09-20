@@ -7,7 +7,8 @@
 
     $email = new Email(array(
         'to'      => page('shop')->error_email()->value,
-        'from'    => 'noreply@'.server::get('server_name'),
+        'from'    => 'irvindominguez1@gmail.com',
+        //'from'    => 'noreply@' . server::get('server_name'),
         'subject' => l::get('order-error-subject'),
         'body'    => $body,
     ));

@@ -13,39 +13,53 @@
 
             </div><!-- /.cart -->
         <?php else: ?>
-            <div class="cart">
-                <div class="cart__items">
+            <div grid class="cart">
 
-                    <?php foreach($items as $i => $item): ?>
-                        <li class="product">
+                <div col="7" class="cart-left">
+                    <div class="cart__items">
+                        <?php foreach($items as $i => $item): ?>
+                            <li class="product">
 
-                            <form id="remove-item-<?= $item->id ?>" action="" method="post">
-                                <input type="hidden" name="action" value="delete">
-                                <input type="hidden" name="id" value="<?= $item->id ?>">
-
-                                <a href="javascript:{}" onClick="document.getElementById('remove-item-<?= $item->id ?>').submit();">
-                                    <span class="icon  icon--remove">Remove</span>
+                                <a href="<?= url($item->uri) ?>">
+                                    <?php if ($item->imgSrc): ?>
+                                        <img class="product__thumb" src="<?= $item->imgSrc ?>" title="<?= $item->name ?>" />
+                                    <?php endif ?>
                                 </a>
-                            </form>
 
-                            <a href="<?= url($item->uri) ?>">
-                                <?php if ($item->imgSrc): ?>
-                                    <img class="product__thumb" src="<?= $item->imgSrc ?>" title="<?= $item->name ?>" />
-                                <?php endif ?>
-                            </a>
+                                <div class="product__details">
+                                    <h2 class="product__title">
+                                        <a href="<?= url($item->uri) ?>"><?= $item->name ?></a>
+                                    </h2>
 
-                            <div class="product__details">
-                                <h2 class="product__title"><?= $item->name ?></h2>
+                                    <div class="product__price">
+                                        <span class="price"><?= $item->priceText ?></span>
+                                    </div>
 
-                                <div class="product__price">
-                                    <span class="price"><?= $item->priceText ?></span>
-                                    <span class="qty">(x<?= $item->quantity ?>)</span>
+                                    <span class="product__variant"><?= str::upper($item->variant) ?></span>
+
+                                    <div class="product__quantity">
+                                        <form action="" method="post">
+                                            <input type="hidden" name="action" value="remove">
+                                            <input type="hidden" name="id" value="<?= $item->id ?>">
+
+                                            <button class="btn-test  icon  icon--<?= e($item->quantity === 1, 'remove', 'minus') ?>">Minus</button>
+                                        </form>
+
+                                        <span id="qty"><?= $item->quantity ?></span>
+
+                                        <form action="" method="post">
+                                            <input type="hidden" name="action" value="add">
+                                            <input type="hidden" name="id" value="<?= $item->id ?>">
+
+                                            <button class="btn-test  icon  icon--add">Add</button>
+                                        </form>
+                                    </div>
                                 </div>
 
-                                <span class="product__option"><?= str::upper($item->variant) ?></span>
-                            </div>
-                        </li>
-                    <?php endforeach ?>
+
+                            </li>
+                        <?php endforeach ?>
+                    </div><!-- / Cart items -->
 
 
                     <!-- Set discount code -->
@@ -64,12 +78,12 @@
                                 </div>
                             <?php else: ?>
                                 <form method="post">
-                                    <div class="grid  sm-grid--full  grid--gutters">
-                                        <div class="grid-cell">
-                                            <input type="text" name="dc" placeholder="Discount code">
+                                    <div grid>
+                                        <div col="7">
+                                            <input style="width: 100%" type="text" name="dc" placeholder="Discount code">
                                         </div>
 
-                                        <div class="grid-cell">
+                                        <div col="8">
                                             <button type="submit"><?= l::get('code-apply') ?></button>
                                         </div>
                                     </div>
@@ -114,11 +128,13 @@
 
                         <button type="submit"><?= l::get('update-shipping') ?></button>
                     </form>
-                </div>
+                </div><!-- / Cart left -->
 
-                <div class="cart__summary">
-                    <ul class="cart__details">
-                        <li>Subtotal <span><?= formatPrice($cart->getAmount()) ?></span></li>
+
+
+                <div col="4" style="margin-left: auto" class="cart__info">
+                    <ul class="details">
+                        <li>Merchandise <span><?= formatPrice($cart->getAmount()) ?></span></li>
                         <li>Shipping <span><?= formatPrice($shipping['rate']) ?></span></li>
 
                         <?php if ($discount): ?>
@@ -134,7 +150,7 @@
                         <?php if ($gateway == 'paylater' && !$cart->canPayLater()) continue ?>
 
                         <?php $g = $kirby->get('option', 'gateway-' . $gateway) ?>
-                        <form method="post" action="<?= url('shop/cart/process') ?>">
+                        <form method="POST" action="<?= url('shop/cart/process') ?>">
 
                             <input type="hidden" name="gateway" value="<?= $gateway ?>">
 
@@ -153,10 +169,12 @@
                                     <img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-rect-paypalcheckout-60px.png" />
                                 </button>
                             <?php else: ?>
-                                <button type="submit">
+                                <button type="submit" class="btn  btn--inverse">
                                     <?= $gateway != 'paylater' ? '<span>' . l::get('pay-now') . '</span>' : '' ?>
                                 </button>
-                                <p class="text--small"><span class="icon  icon--secure  icon--small">Secure payment</span> Payments securely processed by <a href="https://stripe.com/">Stripe</a>.</p>
+
+                                <p class="secure-payment"><span class="icon  icon--secure">Secure payment</span> Payments securely processed by <a href="https://stripe.com/">Stripe</a>.</p>
+
                             <?php endif ?>
                         </form>
                     <?php endforeach ?>
